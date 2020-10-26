@@ -11,7 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- 数据库： `user`
+-- 數據库： `user`
 --
 
 -- --------------------------------------------------------
@@ -22,15 +22,15 @@ SET time_zone = "+00:00";
 CREATE DATABASE user;
 use user;
 CREATE TABLE `u_admin` (
-  `id` int(5) NOT NULL COMMENT '管理员id',
-  `username` char(30) NOT NULL COMMENT '管理员名称',
-  `password` char(40) NOT NULL COMMENT '管理员密码',
-  `mpw` varchar(40) NOT NULL COMMENT '明文密码',
-  `ip` varchar(255) NOT NULL COMMENT '最后登录ip'
+  `id` int(5) NOT NULL COMMENT '管理員id',
+  `username` char(30) NOT NULL COMMENT '管理員名称',
+  `password` char(40) NOT NULL COMMENT '管理員密碼',
+  `mpw` varchar(40) NOT NULL COMMENT '明文密碼',
+  `ip` varchar(255) NOT NULL COMMENT '最后登錄ip'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `u_admin`
+-- 转存表中的數據 `u_admin`
 --
 
 INSERT INTO `u_admin` (`id`, `username`, `password`, `mpw`, `ip`) VALUES
@@ -44,13 +44,13 @@ INSERT INTO `u_admin` (`id`, `username`, `password`, `mpw`, `ip`) VALUES
 
 CREATE TABLE `u_crows` (
   `id` bigint(20) NOT NULL COMMENT '记录id',
-  `uid` bigint(20) NOT NULL COMMENT '用户id',
-  `jf` varchar(20) NOT NULL DEFAULT '0' COMMENT '当前积分',
-  `ymd` varchar(20) NOT NULL COMMENT '签到时间20180111'
+  `uid` bigint(20) NOT NULL COMMENT '用戶id',
+  `jf` varchar(20) NOT NULL DEFAULT '0' COMMENT '擁有點數',
+  `ymd` varchar(20) NOT NULL COMMENT '签到時間20180111'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `u_crows`
+-- 转存表中的數據 `u_crows`
 --
 
 INSERT INTO `u_crows` (`id`, `uid`, `jf`, `ymd`) VALUES
@@ -67,17 +67,17 @@ INSERT INTO `u_crows` (`id`, `uid`, `jf`, `ymd`) VALUES
 
 CREATE TABLE `u_users` (
   `id` mediumint(9) NOT NULL COMMENT 'id号',
-  `username` varchar(50) NOT NULL COMMENT '用户名',
-  `password` varchar(50) NOT NULL COMMENT '用户密码',
-  `integral` bigint(20) NOT NULL DEFAULT '20' COMMENT '用户积分',
-  `zc_time` bigint(20) NOT NULL COMMENT '注册时间',
+  `username` varchar(50) NOT NULL COMMENT '名稱',
+  `password` varchar(50) NOT NULL COMMENT '用戶密碼',
+  `integral` bigint(20) NOT NULL DEFAULT '20' COMMENT '用戶點數',
+  `zc_time` bigint(20) NOT NULL COMMENT '註冊時間',
   `sex` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1男0女 默认 1',
-  `ip` varchar(25) NOT NULL DEFAULT '0' COMMENT '用户最后登陆ip',
-  `email` varchar(50) NOT NULL COMMENT '邮箱'
+  `ip` varchar(25) NOT NULL DEFAULT '0' COMMENT '用戶最后登錄ip',
+  `email` varchar(50) NOT NULL COMMENT 'E-Mail'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `u_users`
+-- 转存表中的數據 `u_users`
 --
 
 INSERT INTO `u_users` (`id`, `username`, `password`, `integral`, `zc_time`, `sex`, `ip`, `email`) VALUES
@@ -97,13 +97,13 @@ INSERT INTO `u_users` (`id`, `username`, `password`, `integral`, `zc_time`, `sex
 
 CREATE TABLE `u_xiaos` (
   `id` bigint(20) NOT NULL COMMENT '自增id',
-  `uid` bigint(20) NOT NULL COMMENT '用户id',
-  `jf` varchar(20) NOT NULL DEFAULT '0' COMMENT '当前积分',
-  `ymd` varchar(10) NOT NULL COMMENT '消费时间20180111'
+  `uid` bigint(20) NOT NULL COMMENT '用戶id',
+  `jf` varchar(20) NOT NULL DEFAULT '0' COMMENT '擁有點數',
+  `ymd` varchar(10) NOT NULL COMMENT '消費時間20180111'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `u_xiaos`
+-- 转存表中的數據 `u_xiaos`
 --
 
 INSERT INTO `u_xiaos` (`id`, `uid`, `jf`, `ymd`) VALUES
@@ -165,7 +165,7 @@ ALTER TABLE `u_xiaos`
 -- 使用表AUTO_INCREMENT `u_admin`
 --
 ALTER TABLE `u_admin`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT COMMENT '管理员id', AUTO_INCREMENT=18;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT COMMENT '管理員id', AUTO_INCREMENT=18;
 
 --
 -- 使用表AUTO_INCREMENT `u_crows`

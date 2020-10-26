@@ -1,6 +1,6 @@
 <?php
 /**
- * 用户签到记录功能实现
+ * 用戶簽到記錄功能实现
  */
 
 /**
@@ -9,19 +9,19 @@
 session_start();
 
 /**
- * 开启检查用户是否登陆
+ * 开启检查用戶是否登錄
  */
 if (empty($_SESSION['user']['isUserLogin'])) {
     header("Location:../index.php");
 }
 
 /**
- * 引入数据库配置文件
+ * 引入數據库配置文件
  */
 include '../config/config.inc.php';
 
 /**
- * 查询签到记录
+ * 查詢簽到記錄
  */
 $sql = "SELECT u_crows.id,u_crows.ymd,u_crows.jf,u_users.username FROM u_crows  join u_users where u_crows.uid= u_users.id and u_users.id={$_SESSION['user']['id']} order by u_crows.id DESC ";
 $res = $pdo->query($sql);
@@ -37,7 +37,7 @@ $res = $pdo->query($sql);
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>会员管理系统</title>
+    <title>會員管理系統</title>
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -49,14 +49,14 @@ $res = $pdo->query($sql);
     <div class="row">
         <div class="col-sm-9" align="center">
             <div class="panel" style="border-radius: 0;min-height:450px;">
-                <div class="panel-heading" style="background-color:#1abc9c;color:white;border-radius:0;">签到记录</div>
+                <div class="panel-heading" style="background-color:#1abc9c;color:white;border-radius:0;">簽到記錄</div>
                 <div class="panel-body">
                     <table class="table">
                         <tr>
-                            <th style="text-align: center;">用户名</th>
-                            <th style="text-align: center;">签到时间</th>
-                            <th style="text-align: center;">剩余积分</th>
-                            <th style="text-align: center;">增加积分</th>
+                            <th style="text-align: center;">名稱</th>
+                            <th style="text-align: center;">签到時間</th>
+                            <th style="text-align: center;">剩餘點數</th>
+                            <th style="text-align: center;">增加點數</th>
                         </tr>
 
                         <?php

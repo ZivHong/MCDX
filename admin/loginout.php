@@ -1,6 +1,6 @@
 <?php
 /**
- * 退出登陆
+ * 登出
  */
 
 
@@ -10,7 +10,7 @@
 session_start();
 
 /**
- * 开启取出用户名
+ * 开启取出名稱
  */
 $username = $_SESSION['admin']['username'];
 
@@ -27,7 +27,7 @@ $_SESSION['admin'] = array();
 //session_destroy();
 
 /**
- * 判断是否登陆 无session 跳转到登陆 并做退出标记
+ * 判断是否登錄 无session 跳转到登錄 并做退出标记
  */
 if (empty($_SESSION['user']['isUserLogin'])) {
     header("Location:../admin.php?action=out");

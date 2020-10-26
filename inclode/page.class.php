@@ -6,12 +6,12 @@
  */
 class Page
 {
-    private $total;                        //数据表中总记录数
+    private $total;                        //數據表中总记录数
     private $listRows;                        //每页显示行数
     private $limit;                        //SQL语句使用limit从句,限制获取记录个数
     private $uri;                            //自动获取url的请求地址
     private $pageNum;                        //总页数
-    private $page;                            //当前页
+    private $page;                            //擁有页
     private $config = array(
         'head' => "条记录",
         'prev' => "上一页",
@@ -25,7 +25,7 @@ class Page
      * 构造方法，可以设置分页类的属性
      * @param    int $total 计算分页的总记录数
      * @param    int $listRows 可选的，设置每页需要显示的记录数，默认为25条
-     * @param    mixed $query 可选的，为向目标页面传递参数,可以是数组，也可以是查询字符串格式
+     * @param    mixed $query 可选的，为向目标页面传递参数,可以是数组，也可以是查詢字符串格式
      * @param    bool $ord 可选的，默认值为true, 页面从第一页开始显示，false则为最后一页
      */
     public function __construct($total, $listRows = 25, $query = "", $ord = true)
@@ -34,7 +34,7 @@ class Page
         $this->listRows = $listRows;
         $this->uri = $this->getUri($query);
         $this->pageNum = ceil($this->total / $this->listRows);
-        /*以下判断用来设置当前面*/
+        /*以下判断用来设置擁有面*/
         if (!empty($_GET["page"])) {
             $page = $_GET["page"];
         } else {
@@ -59,7 +59,7 @@ class Page
 
     /**
      * 用于设置显示分页的信息，可以进行连贯操作
-     * @param    string $param 是成员属性数组config的下标
+     * @param    string $param 是成員属性数组config的下标
      * @param    string $value 用于设置config下标对应的元素值
      * @return    object            返回本对象自己$this， 用于连惯操作
      */
@@ -71,7 +71,7 @@ class Page
         return $this;
     }
 
-    /* 不是直接去调用，通过该方法，可以使用在对象外部直接获取私有成员属性limit和page的值 */
+    /* 不是直接去调用，通过该方法，可以使用在对象外部直接获取私有成員属性limit和page的值 */
     function __get($args)
     {
         if ($args == "limit" || $args == "page")
@@ -92,7 +92,7 @@ class Page
         $html[0] = "<li><a>共<b>{$this->total}</b>{$this->config["head"]}</a></li>";
         $html[1] = "<li><a>本页<b>" . $this->disnum() . "</b>条</a></li>";
         $html[2] = "<li><a>本页从<b>{$this->start()}-{$this->end()}</b>条</a></li>";
-        $html[3] = "<li><a>当前在<b>{$this->page}/{$this->pageNum}</b>页</a></li>";
+        $html[3] = "<li><a>擁有在<b>{$this->page}/{$this->pageNum}</b>页</a></li>";
         $html[4] = $this->firstprev();
         $html[5] = $this->pageList();
         $html[6] = $this->nextlast();
@@ -118,7 +118,7 @@ class Page
             return 0;
     }
 
-    /* 在对象内部使用的私有方法，用于自动获取访问的当前URL */
+    /* 在对象内部使用的私有方法，用于自动获取访问的擁有URL */
     private function getUri($query)
     {
         $request_uri = $_SERVER["REQUEST_URI"];
@@ -147,7 +147,7 @@ class Page
         return $url;
     }
 
-    /* 在对象内部使用的私有方法，用于获取当前页开始的记录数 */
+    /* 在对象内部使用的私有方法，用于获取擁有页开始的记录数 */
     private function start()
     {
         if ($this->total == 0)
@@ -156,7 +156,7 @@ class Page
             return ($this->page - 1) * $this->listRows + 1;
     }
 
-    /* 在对象内部使用的私有方法，用于获取当前页结束的记录数 */
+    /* 在对象内部使用的私有方法，用于获取擁有页结束的记录数 */
     private function end()
     {
         return min($this->page * $this->listRows, $this->total);
@@ -179,18 +179,18 @@ class Page
         $linkPage = "";
 
         $inum = floor($this->listNum / 2);
-        /*当前页前面的列表 */
+        /*擁有页前面的列表 */
         for ($i = $inum; $i >= 1; $i--) {
             $page = $this->page - $i;
 
             if ($page >= 1)
                 $linkPage .= "<li><a href='{$this->uri}page={$page}'>{$page}</a></li>";
         }
-        /*当前页的信息 */
+        /*擁有页的信息 */
         if ($this->pageNum > 1)
             $linkPage .= "<li class=\"am-active\"><a href=\"#\">{$this->page}</a></li>";
 
-        /*当前页后面的列表 */
+        /*擁有页后面的列表 */
         for ($i = 1; $i <= $inum; $i++) {
             $page = $this->page + $i;
             if ($page <= $this->pageNum)

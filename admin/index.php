@@ -1,6 +1,6 @@
 <?php
 /**
- * 会员管理
+ * 會員管理
  */
 
 
@@ -10,26 +10,26 @@
 session_start();
 
 /**
- * 开启判断是否登陆
+ * 开启判断是否登錄
  */
 if (empty($_SESSION['admin']['isLogin'])) {
     header("Location:../admin.php");
 }
 
 /**
- * 包含数据库配置
+ * 包含數據库配置
  */
 include '../config/config.inc.php';
 
 
 /**
- * 定义空查询语句
+ * 定义空查詢语句
  */
 $code = '';
 
 
 /**
- * 接受查询条件参参数  无条件 则忽略
+ * 接受查詢条件参参数  无条件 则忽略
  */
 if (isset($_GET['action'])) {
     if ($_GET['action'] == 'ser') {
@@ -53,9 +53,9 @@ if (isset($_GET['action'])) {
             if ($row && $row > 0) {
                 $sql = "delete from u_crows where uid in (" . implode(',', $_POST['id']) . ") ";
                 $row = $pdo->exec($sql);
-                echo "<script>alert('删除数据成功');window.location.href = 'index.php';</script>";
+                echo "<script>alert('删除數據成功');window.location.href = 'index.php';</script>";
             } else {
-                echo "<script>alert('删除数据失败');window.location.href = 'index.php';</script>";
+                echo "<script>alert('删除數據失败');window.location.href = 'index.php';</script>";
             }
         } elseif (empty($_POST['id']) && !empty($_GET['id'])) {
             //单个删除
@@ -64,9 +64,9 @@ if (isset($_GET['action'])) {
             if ($row && $row > 0) {
                 $sql = "delete from u_crows where uid='{$_GET['id']}' ";
                 $row = $pdo->exec($sql);
-                echo "<script>alert('删除数据成功');window.location.href = 'index.php?page=" . $_GET['page'] . "';</script>";
+                echo "<script>alert('删除數據成功');window.location.href = 'index.php?page=" . $_GET['page'] . "';</script>";
             } else {
-                echo "<script>alert('删除数据失败');window.location.href = 'index.php?page=" . $_GET['page'] . "';</script>";
+                echo "<script>alert('删除數據失败');window.location.href = 'index.php?page=" . $_GET['page'] . "';</script>";
             }
         } else {
             echo "<script>alert('系统判定误操作');window.location.href = 'index.php?page=" . $_GET['page'] . "';</script>";
@@ -76,7 +76,7 @@ if (isset($_GET['action'])) {
 }
 
 /**
- * 查询会员总数
+ * 查詢會員总数
  */
 $sqll = "select * from u_users WHERE 1=1 {$code}";
 $zong = $pdo->query($sqll)->rowCount();
@@ -99,12 +99,12 @@ include "../inclode/page.class.php";
 $page = new Page($zong, $num);
 
 /**
- *查询数据
+ *查詢數據
  */
 $sql = "select 	id,username,integral,zc_time,sex from u_users WHERE 1=1 $code ORDER BY id DESC {$page->limit} ";
 
 /**
- *获取数据
+ *获取數據
  */
 $res = $pdo->query($sql);
 ?>
@@ -117,7 +117,7 @@ $res = $pdo->query($sql);
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>会员管理</title>
+    <title>會員管理</title>
 </head>
 <body style="border: 1px solid #000000">
 
@@ -149,7 +149,7 @@ $res = $pdo->query($sql);
 
 <?php include 'header.php' ?>
 <div style="clear: both; padding: 10px;">
-    <p>当前位置:---------会员管理</p>
+    <p>擁有位置:---------會員管理</p>
 </div>
 <div class="body">
 
@@ -157,10 +157,10 @@ $res = $pdo->query($sql);
         <table style="text-align: center;width: 100%;" border="1">
 
             <tr>
-                <th>选择</th>
-                <th>用户名</th>
-                <th>注册时间</th>
-                <th>积分</th>
+                <th>選擇</th>
+                <th>名稱</th>
+                <th>註冊時間</th>
+                <th>點數</th>
                 <th>性别</th>
                 <th>操作</th>
             </tr>
@@ -180,7 +180,7 @@ $res = $pdo->query($sql);
                 echo "<td> ";
                 echo "<a href='xiu.php?action=xiu&id=$id&page=$page->page'> 修改</a>---";
                 echo "<a href='cha.php?action=cha&id=$id&page=$page->page'>查看</a>---";
-                echo "<a onclick='return confirm(\"确认删除这条数据吗？\")' href='index.php?action=del&id=$id&page=$page->page'>删除</a>";
+                echo "<a onclick='return confirm(\"確認删除这条數據吗？\")' href='index.php?action=del&id=$id&page=$page->page'>删除</a>";
                 echo "</td >";
                 echo "</tr>";
             }
@@ -188,7 +188,7 @@ $res = $pdo->query($sql);
 
 
             <tr>
-                <td><input onclick='return confirm("确认删除这些数据吗？")' type='submit' name='dosubmit' value='删除 '></td>
+                <td><input onclick='return confirm("確認删除这些數據吗？")' type='submit' name='dosubmit' value='删除 '></td>
                 <td colspan='17' align='center'> <?php echo $page->fpage(0, 1, 2, 3, 4, 5, 6); ?></td>
             </tr>
         </table>

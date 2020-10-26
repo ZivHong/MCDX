@@ -6,7 +6,7 @@ class Vcode
     private $width;    //宽
     private $height;   //高
     private $num;       //数量
-    private $code;    //验证码
+    private $code;    //验证碼
     private $img;     //图像的资源
 
 
@@ -20,7 +20,7 @@ class Vcode
     }
 
 
-    //获取字符的验证码， 用于保存在服务器中
+    //获取字符的验证碼， 用于保存在服务器中
     function getcode()
     {
         return $this->code;
@@ -109,7 +109,7 @@ class Vcode
 
     }
 
-    //生成验证码字符串
+    //生成验证碼字符串
     private function createcode()
     {
         $codes = "3456789abcdefghijkmnpqrstuvwxyABCDEFGHIJKLMNPQRSTUVWXY";

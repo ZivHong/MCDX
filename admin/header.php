@@ -28,12 +28,12 @@
 
 
 <div class="navleft">
-    <a href="ser.php">查询会员</a>
+    <a href="ser.php">查詢會員</a>
 </div>
 
 <div class="navright">
-    <a href="#">当前人员:<span style="color: red;"><?php echo $_SESSION['admin']['username']; ?><span></a>
-    <a href="loginout.php">退出登录</a>
+    <a href="#">擁有人員:<span style="color: red;"><?php echo $_SESSION['admin']['username']; ?><span></a>
+    <a href="loginout.php">登出</a>
 </div>
 
 

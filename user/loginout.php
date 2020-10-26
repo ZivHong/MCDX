@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 用户退出功能实现
+ * 用戶退出功能实现
  */
 
 /**
@@ -10,7 +10,7 @@
 session_start();
 
 /**
- * 取出当前登陆用户名
+ * 取出擁有登錄名稱
  */
 $username = $_SESSION['user']['username'];
 
@@ -28,7 +28,7 @@ $_SESSION['user'] = array();
 //session_destroy();
 
 /**
- * 开启检查用户是否登陆  表示退出  并做退出标记
+ * 开启检查用戶是否登錄  表示退出  并做退出标记
  */
 if (empty($_SESSION['user']['isUserLogin'])) {
     header("Location:../index.php?action=out");

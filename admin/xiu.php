@@ -1,6 +1,6 @@
 <?php
 /**
- * 修改会员
+ * 修改會員
  */
 
 /**
@@ -9,20 +9,20 @@
 session_start();
 
 /**
- * 开启判断是否登陆
+ * 开启判断是否登錄
  */
 if (empty($_SESSION['admin']['isLogin'])) {
     header("Location:../admin.php");
 }
 
 /**
- * 包含数据库配置
+ * 包含數據库配置
  */
 include '../config/config.inc.php';
 
 
 /**
- * 根据传入的id 查询出将要修改的用户信息
+ * 根据传入的id 查詢出将要修改的用戶信息
  */
 if (isset($_GET['action']) && $_GET['action'] == "xiu") {
     $stmt = $pdo->prepare('SELECT id,username,password,integral,sex,email FROM u_users where id= ?');
@@ -30,21 +30,21 @@ if (isset($_GET['action']) && $_GET['action'] == "xiu") {
     if ($stmt->rowCount() > 0) {
         list($id, $username, $password, $integral, $sex, $email) = $stmt->fetch(PDO::FETCH_NUM);
     } else {
-        echo "<script>alert('数据不存在！');window.location.href = 'index.php';</script>";
+        echo "<script>alert('數據不存在！');window.location.href = 'index.php';</script>";
     }
 }
 
 
 /**
- * 用户修改操作
+ * 用戶修改操作
  */
 if (isset($_POST['btn'])) {
     $stmt = $pdo->prepare('UPDATE u_users SET username= ? ,password= ? ,integral= ? , sex=?, email=? WHERE id=?');
     $stmt->execute(array($_POST['username'], $_POST['password'], $_POST['integral'], $_POST['sex'], $_POST['email'], $_POST['id']));
     if ($stmt->rowCount() > 0) {
-        echo "<script>alert('修改会员成功');window.location.href = 'index.php?page=" . $_GET['page'] . "';</script>";
+        echo "<script>alert('修改會員成功');window.location.href = 'index.php?page=" . $_GET['page'] . "';</script>";
     } else {
-        echo "<script>alert('修改会员失败')</script>";
+        echo "<script>alert('修改會員失败')</script>";
     }
 }
 
@@ -59,7 +59,7 @@ if (isset($_POST['btn'])) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>修改会员</title>
+    <title>修改會員</title>
 </head>
 <style>
     .inputdiv {
@@ -80,14 +80,14 @@ if (isset($_POST['btn'])) {
 
 <?php include 'header.php' ?>
 <div style="clear: both; padding: 10px;border-bottom: 1px solid;">
-    <p>当前位置:---------修改会员</p>
+    <p>擁有位置:---------修改會員</p>
 </div>
 <div style="padding: 10px">
     <form action="" method="post">
         <input type="hidden" name="id" value="<?php echo $id; ?>">
         <div class="inputdiv">
-            用户名：<input type="text" name="username" value="<?php echo $username; ?>"><br/>
-            密&nbsp;&nbsp;&nbsp;码：<input type="text" name="password" value="<?php echo $password; ?>"><br/>
+            名稱：<input type="text" name="username" value="<?php echo $username; ?>"><br/>
+            密&nbsp;&nbsp;&nbsp;碼：<input type="text" name="password" value="<?php echo $password; ?>"><br/>
             邮&nbsp;&nbsp;&nbsp;箱：<input type="text" name="email" value="<?php echo $email; ?>"><br/>
             积&nbsp;&nbsp;&nbsp;分：<input type="text" name="integral" value="<?php echo $integral; ?>"><br/>
             性&nbsp;&nbsp;&nbsp;别：

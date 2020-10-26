@@ -1,32 +1,32 @@
 <?php
 /**
- * 用户注册文件
- * 主要就是让用户输入资料进行注册
- * 可以增加表单验证 或者修改处理逻辑   比如注册发送邮件等
+ * 用戶註冊文件
+ * 主要就是让用戶输入资料进行註冊
+ * 可以增加表单验证 或者修改处理逻辑   比如註冊发送邮件等
  */
 
 
-//引入数据库链接配置文件
+//引入數據库链接配置文件
 include 'config/config.inc.php';
 
 
-//注册逻辑
+//註冊逻辑
 if (isset($_POST['username'])) {
-    //查询 输入的账号密码
+    //查詢 输入的帳號密碼
     $stmt = $pdo->prepare('select * from u_users where username=?  ');
     $stmt->execute(array($_POST['username']));
-    //如果用户名不存在  进行注册
+    //如果名稱不存在  进行註冊
     if (($stmt->rowCount() == 0)) {
         $time = time();
         $stmt = $pdo->prepare('INSERT INTO u_users (username,password, sex,email,zc_time) VALUES (?,?,?,?,?)');
         $stmt->execute(array($_POST['username'], $_POST['password'], $_POST['sex'], $_POST['email'], $time));
         if ($stmt->rowCount() > 0) {
-            echo "<script>alert('注册成功');window.location.href = 'index.php';</script>";
+            echo "<script>alert('註冊成功');window.location.href = 'index.php';</script>";
         } else {
-            echo "<script>alert('注册失败')</script>";
+            echo "<script>alert('註冊失败')</script>";
         }
     } else {
-        echo "<script>alert('账号已经存在')</script>";
+        echo "<script>alert('帳號已经存在')</script>";
     }
 
 }
@@ -40,30 +40,30 @@ if (isset($_POST['username'])) {
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>会员管理系统----用户注册</title>
+    <title>會員管理系統----用戶註冊</title>
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
 <div>
     <div class="container">
-        <h1 class="text-center">用户注册</h1>
-        <h3 class="text-center">请将以下参数填写完整</h3>
+        <h1 class="text-center">用戶註冊</h1>
+        <h3 class="text-center">請填寫完整資料</h3>
         <hr/>
         <form method="post" action="zhuce.php" style="width: 30%;margin-left: 35%;">
             <div class="form-group">
-                <label>用户名</label>
-                <input type="text" class="form-control" name="username" placeholder="用户名">
+                <label>名稱</label>
+                <input type="text" class="form-control" name="username" placeholder="名稱">
                 <span aria-hidden="true"></span>
             </div>
             <div class="form-group">
-                <label>邮箱</label>
-                <input type="text" class="form-control" name="email" placeholder="邮箱">
+                <label>E-Mail</label>
+                <input type="text" class="form-control" name="email" placeholder="E-Mail">
                 <span aria-hidden="true"></span>
             </div>
             <div class="form-group">
-                <label>密码</label>
-                <input type="password" class="form-control" name="password" placeholder="密码">
+                <label>密碼</label>
+                <input type="password" class="form-control" name="password" placeholder="密碼">
                 <span aria-hidden="true"></span>
             </div>
             <div class="form-group">
@@ -71,7 +71,7 @@ if (isset($_POST['username'])) {
                 <label><input name="sex" checked="checked" type="radio" value="1"/>男 </label>
                 <label><input name="sex" type="radio" value="0"/>女 </label>
             </div>
-            <button type="submit" id="submit" class="btn btn-success">注册</button>
+            <button type="submit" id="submit" class="btn btn-success">註冊</button>
         </form>
     </div>
 </div>

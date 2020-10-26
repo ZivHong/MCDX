@@ -1,6 +1,6 @@
 <?php
 /**
- * 用户签到功能实现
+ * 用戶签到功能实现
  */
 
 
@@ -10,14 +10,14 @@
 session_start();
 
 /**
- * 开启检查用户是否登陆
+ * 开启检查用戶是否登錄
  */
 if (empty($_SESSION['user']['isUserLogin'])) {
     header("Location:../index.php");
 }
 
 /**
- * 引入数据库配置文件
+ * 引入數據库配置文件
  */
 include '../config/config.inc.php';
 
@@ -37,17 +37,17 @@ if (isset($_GET['id'])) {
     $res = $pdo->query($sql);
     //没有签到 执行签到
     if ($res->rowCount() == 0) {
-        //积分增加
+        //點數增加
         $integral += 1;
-        //写入签到记录
+        //写入簽到記錄
         $stmt = $pdo->prepare('INSERT INTO u_crows ( uid,jf,ymd) VALUES (?,?,?)');
         $stmt->execute(array($_GET['id'], $integral, $ymd));
-        //修改用户积分
+        //修改用戶點數
         $stmt = $pdo->prepare('UPDATE u_users SET integral=? WHERE id=?');
         $stmt->execute(array($integral, $id));
 
         if ($stmt->rowCount() > 0) {
-            echo "<script>alert('签到成功！积分+1');window.location.href = 'index.php';</script>";
+            echo "<script>alert('签到成功！點數+1');window.location.href = 'index.php';</script>";
         } else {
             echo "<script>alert('签到失败，请稍后重试');window.location.href = 'index.php';</script>";
         }

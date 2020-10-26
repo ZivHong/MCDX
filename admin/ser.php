@@ -5,19 +5,19 @@
 session_start();
 
 /**
- * 开启判断是否登陆
+ * 开启判断是否登錄
  */
 if (empty($_SESSION['admin']['isLogin'])) {
     header("Location:../admin.php");
 }
 
 /**
- * 包含数据库配置
+ * 包含數據库配置
  */
 include '../config/config.inc.php';
 
 /**
- * 编辑数据库配置
+ * 编辑數據库配置
  */
 if (isset($_POST['btn'])) {
     $username = empty($_POST['username']) ? "" : "&username=" . $_POST['username'] . "";
@@ -39,7 +39,7 @@ if (isset($_POST['btn'])) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>查询会员</title>
+    <title>查詢會員</title>
 </head>
 <style>
     .inputdiv {
@@ -51,23 +51,23 @@ if (isset($_POST['btn'])) {
 
 <?php include 'header.php' ?>
 <div style="clear: both; padding: 10px;border-bottom: 1px solid;">
-    <p>当前位置: <a href="index.php">订单列表</a>>查询订单</p>
+    <p>擁有位置: <a href="index.php">订单列表</a>>查詢订单</p>
 </div>
 <div style="padding: 10px">
     <form action="" method="post">
         <div style="width: 400px; height: 450px;padding: 10px; float: left;">
             <div class="inputdiv">
-                按照用户名查询：<input type="text" name="username" value=""><br/>
+                按照名稱查詢：<input type="text" name="username" value=""><br/>
             </div>
             <div class="inputdiv">
-                按照邮箱查询：<input type="text" name="email" value=""><br/>
+                按照E-Mail查詢：<input type="text" name="email" value=""><br/>
             </div>
 
 
             <div class="inputdiv">
-                按照用户性别查询：
+                按照用戶性别查詢：
                 <select name="sex">
-                    <option value=''>点我选择</option>
+                    <option value=''>点我選擇</option>
                     <option value='0'>女</option>
                     <option value='1'>男</option>
                 </select>
@@ -75,14 +75,14 @@ if (isset($_POST['btn'])) {
 
 
             <div style=" padding-top: 15px;">
-                <input type="submit" name="btn" value="点击查询">
+                <input type="submit" name="btn" value="点击查詢">
             </div>
         </div>
 
         <div style="float: left;width: 300px;  text-align: center;">
-            <h3>查询须知</h3>
-            <p style="text-align:center; ">查询的时候请注意查询条件</p>
-            <p style="text-align:center; ">查询的时候请注意查询条件</p>
+            <h3>查詢须知</h3>
+            <p style="text-align:center; ">查詢的时候请注意查詢条件</p>
+            <p style="text-align:center; ">查詢的时候请注意查詢条件</p>
 
         </div>
 

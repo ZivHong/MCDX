@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 用户主页功能实现
+ * 首頁功能实现
  */
 
 /**
@@ -10,7 +10,7 @@
 session_start();
 
 /**
- * 开启检查用户是否登陆
+ * 开启检查用戶是否登錄
  */
 if (empty($_SESSION['user']['isUserLogin'])) {
     header("Location:../index.php");
@@ -27,7 +27,7 @@ if (empty($_SESSION['user']['isUserLogin'])) {
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>会员管理系统</title>
+    <title>會員管理系統</title>
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -49,13 +49,13 @@ if (empty($_SESSION['user']['isUserLogin'])) {
                         <div class="col-sm-offset-2 col-sm-7">
                             <form class="form-horizontal" style="background: none">
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">用户名</label>
+                                    <label class="col-sm-4 control-label">名稱</label>
                                     <div class="col-sm-7">
                                         <input class="form-control" value="<?php echo $username; ?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">邮&nbsp;&nbsp;&nbsp;箱</label>
+                                    <label class="col-sm-4 control-label">E-Mail</label>
                                     <div class="col-sm-7">
                                         <input class="form-control" value="<?php echo $email; ?>">
                                     </div>

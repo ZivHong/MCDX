@@ -4,12 +4,12 @@
  */
 
 /**
- * 数据库配置文件
+ * 數據库配置文件
  */
 include '../config/config.inc.php';
 
 /**
- * 查询用户信息
+ * 查詢用戶信息
  */
 $stmt = $pdo->prepare('SELECT	id,username,integral,zc_time,sex,email FROM u_users where id= ?');
 $stmt->execute(array($_SESSION['user']['id']));
@@ -21,12 +21,12 @@ if ($stmt->rowCount() > 0) {
 ?>
 
 <ol class="breadcrumb" align="center">
-    <li><a href="index.php">用户主页</a></li>
-    <li><a href="#">当前（<?php echo $integral; ?>）积分</a></li>
-    <li><a href="xiao_user.php?id=<?php echo $id; ?>">模拟消费1积分</a></li>
-    <li><a href="qian_user.php?id=<?php echo $id; ?>">积分签到</a></li>
-    <li><a href="xiu_user.php?id=<?php echo $id; ?>">修改资料</a></li>
-    <li><a href="loginout.php">退出登陆</a></li>
+    <li><a href="index.php">首頁</a></li>
+    <li><a href="#">擁有（<?php echo $integral; ?>）點數</a></li>
+    <li><a href="xiao_user.php?id=<?php echo $id; ?>">消費1點數</a></li>
+    <li><a href="qian_user.php?id=<?php echo $id; ?>">點數签到</a></li>
+    <li><a href="xiu_user.php?id=<?php echo $id; ?>">修改資料</a></li>
+    <li><a href="loginout.php">登出</a></li>
 </ol>
 
 
